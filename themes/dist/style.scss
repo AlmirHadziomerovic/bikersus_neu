@@ -1,0 +1,53 @@
+/*!
+Theme Name: Bikersus
+Author: Almir Hadziomerovic
+Description: Projekt Bikersus_neu
+Version: 1.0.0
+text Domain: haddes
+
+*/
+
+
+
+$textcolor: #000;
+$fontsize:18px;
+$primary_color:#44b623;
+$secondary_color:#fff;
+$third_color:#000;
+$max-width:1400px;
+
+::selection {
+  background-color:$primary_color;
+  color:$secondary_color
+}
+/* racing-sans-one-regular - latin */
+@font-face {
+  font-display: swap;
+  font-family: 'Racing Sans One';
+  font-style: normal;
+  font-weight: 400;
+  src: url('/themes/assets/fonts/racing-sans-one-v13-latin-regular.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+*, *::before, *::after{
+  box-sizing:border-box;
+}
+img{
+  max-width:100%;
+  height:auto;
+  vertical-align:bottom;
+}
+html{
+  font-size:$fontsize;
+  line-height:1.4em;
+  scroll-behavior:smooth;
+}
+a:hover{
+  text-decoration: underline;
+}
+container{
+  max-width:$max-width;
+  margin-left:auto;
+  margin-right:auto;
+  padding-left:calc(var(--columns-gap) / 5);
+  padding-right:calc(var(--columns-gap) / 5);
+}
