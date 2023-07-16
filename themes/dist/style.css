@@ -39,12 +39,99 @@ a:hover {
   text-decoration: underline;
 }
 
-container {
+#navbar {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  z-index: 1000;
+}
+
+#navbar .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 80px;
+}
+
+@media screen and (min-width: 768pc) {
+  #navbar .container {
+    height: 80px;
+  }
+  .logo {
+    margin-bottom: 2.5em;
+  }
+}
+.brand img:not([src$=svg]) {
+  height: 100%;
+  width: auto;
+}
+
+.container {
   max-width: 1400px;
   margin-left: auto;
   margin-right: auto;
   padding-left: calc(var(--columns-gap) / 5);
   padding-right: calc(var(--columns-gap) / 5);
+}
+.container .brand {
+  height: 100%;
+  width: auto;
+}
+
+.nav-menu, .sub-menu {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  color: #000;
+}
+.nav-menu .sub-menu, .sub-menu .sub-menu {
+  font-size: 1.2em;
+}
+
+input[type=checkbox] {
+  display: none;
+}
+
+.nav-menu {
+  position: fixed;
+  top: 80px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 2rem 0;
+  opacity: 1;
+  pointer-events: none;
+  overflow-y: auto;
+  text-align: center;
+  font-weight: 400;
+}
+
+.nav-main {
+  position: static;
+  display: flex;
+  padding: 0;
+  overflow: visible;
+  opacity: 1;
+  pointer-events: auto;
+  font-size: clamp(12px, 1vw, 18px);
+}
+
+.nav-main a {
+  display: inline-block;
+  text-decoration: none;
+  padding: 0.75em 0;
+  list-style: none;
+}
+
+#nav-button {
+  width: 80px;
+  height: 80px;
+  cursor: pointer;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
 }
 
 /*# sourceMappingURL=style.css.map */
