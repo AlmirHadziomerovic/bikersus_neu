@@ -6,9 +6,39 @@ Version: 1.0.0
 text Domain: haddes
 
 */
+.screen-reader-text {
+  border: 0;
+  clip: rect(1px, 1px, 1px, 1px);
+  clip-path: inset(50%);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+  word-wrap: normal !important;
+}
+
+.screen-reader-text:focus {
+  background-color: #eee;
+  clip: auto !important;
+  clip-path: none;
+  color: #444;
+  display: block;
+  font-size: 1em;
+  height: auto;
+  left: 5px;
+  line-height: normal;
+  padding: 15px 23px 14px;
+  text-decoration: none;
+  top: 5px;
+  width: auto;
+  z-index: 100000;
+}
+
 ::selection {
   background-color: #44b623;
-  color: #fff;
+  color: #ffffff;
 }
 
 /* racing-sans-one-regular - latin */
@@ -18,36 +48,6 @@ text Domain: haddes
   font-style: normal;
   font-weight: 400;
   src: url("/themes/dist/assets/fonts/racing-sans-one-v13-latin-regular.woff2") format("woff2"); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
-}
-@media screen and (min-width: 768px) {
-  .screen-reader-text {
-    border: 0;
-    clip: rect(1px, 1px, 1px, 1px);
-    clip-path: inset(50%);
-    height: 1px;
-    margin: -1px;
-    overflow: hidden;
-    padding: 0;
-    position: absolute;
-    width: 1px;
-    word-wrap: normal !important;
-  }
-  .screen-reader-text:focus {
-    background-color: #eee;
-    clip: auto !important;
-    clip-path: none;
-    color: #444;
-    display: block;
-    font-size: 1em;
-    height: auto;
-    left: 5px;
-    line-height: normal;
-    padding: 15px 23px 14px;
-    text-decoration: none;
-    top: 5px;
-    width: auto;
-    z-index: 100000;
-  }
 }
 *, *::before, *::after {
   box-sizing: border-box;
@@ -98,6 +98,16 @@ a:hover {
   left: 0;
   right: 0;
   bottom: 0;
+  position: static;
+  padding: 0;
+  overflow: visible;
+  opacity: 1;
+  pointer-events: auto;
+  font-size: clamp(12px, 1vw, 18px);
+  font-family: "Racing Sans One";
+  letter-spacing: 2px;
+  margin: -10px;
+  height: 35px;
 }
 
 #navbar {
@@ -121,18 +131,30 @@ a:hover {
     height: 80px;
   }
 }
-#brand {
+
+.brand {
   height: 100%;
   width: auto;
 }
 
 @media screen and (min-width: 768px) {
-  .logo {
-    margin-bottom: 1.5em;
-    max-width: 80%;
+  .brand {
+    max-width: 50%;
     height: auto;
   }
 }
+
+.logo {
+  margin-bottom: 1.5em;
+  max-width: 70%;
+  height: auto;
+}
+@media screen and (min-width: 768px) {
+  .logo {
+    margin-top: 20px;
+  }
+}
+
 #brand img:not([src$=svg]) {
   height: 100%;
   width: auto;
@@ -142,7 +164,7 @@ a:hover {
   margin: 0;
   padding: 0;
   list-style-type: none;
-  color: #fff;
+  color: #ffffff;
 }
 
 .sub-menu {
@@ -154,14 +176,15 @@ a:hover {
     margin: 0;
     padding: 0;
     list-style-type: none;
-    background-color: #fff;
+    background-color: #ffffff;
     color: black;
     font-size: 1em;
   }
 }
+
 .nav-menu {
   position: fixed;
-  top: 80px;
+  top: 60px;
   left: 0;
   right: 0;
   bottom: 0;
@@ -189,6 +212,7 @@ a:hover {
     gap: 0;
   }
 }
+
 @media screen and (min-width: 768px) {
   #nav-main {
     position: static;
@@ -202,6 +226,7 @@ a:hover {
     letter-spacing: 2px;
   }
 }
+
 input[type=checkbox] {
   display: none;
 }
@@ -220,6 +245,7 @@ input[type=checkbox] {
     list-style: none;
   }
 }
+
 #nav-button {
   width: 60px;
   height: 60px;
@@ -251,6 +277,7 @@ input[type=checkbox] {
     right: 10px;
   }
 }
+
 #nav-main .current-menu-item > a {
   color: #44b623;
 }
@@ -260,11 +287,15 @@ input[type=checkbox] {
     text-decoration: underline;
   }
 }
+
 @media screen and (min-width: 768px) {
   #nav-main > li {
     position: relative;
     margin-left: 2em;
   }
+}
+
+@media screen and (min-width: 768px) {
   #nav-main .sub-menu {
     position: absolute;
     top: 100%;
@@ -279,15 +310,18 @@ input[type=checkbox] {
     transition: opacity 200ms ease-in-out, transform 150ms linear;
     font-size: 1.5em;
   }
-  #nav-main li:hover > .sub-menu {
-    opacity: 1;
-    pointer-events: auto;
-    transform: translate(-50% 0);
-  }
-  #nav-main .sub-menu a {
-    display: block;
-  }
 }
+
+#nav-main li:hover > .sub-menu {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translate(-50% 0);
+}
+
+#nav-main .sub-menu a {
+  display: block;
+}
+
 @media screen and (min-width: 768px) {
   #column-header-text {
     display: flex;
@@ -295,6 +329,7 @@ input[type=checkbox] {
     align-items: center;
   }
 }
+
 #nav-button {
   width: 60px;
   height: 60px;
@@ -310,6 +345,7 @@ input[type=checkbox] {
     display: none;
   }
 }
+
 #nav-button-icon {
   width: 45px;
   height: 3px;
@@ -319,13 +355,13 @@ input[type=checkbox] {
 #nav-button-icon::before {
   width: 35px;
   height: 3px;
-  background-color: #44b623;
+  background-color: #000;
 }
 
 #nav-button-icon::after {
   width: 35px;
   height: 3px;
-  background-color: grey;
+  background-color: #000;
 }
 
 #nav-button-icon {
@@ -338,6 +374,7 @@ input[type=checkbox] {
     display: none;
   }
 }
+
 #nav-button-icon::before, #nav-button-icon::after {
   content: "";
   display: block;
@@ -371,9 +408,11 @@ input[type=checkbox] {
   transform: rotate(140deg);
 }
 
-#nav-main {
-  transform: translateY(-100%);
-  transition: all 1.5s;
+@media screen and (min-width: 768px) {
+  #nav-main {
+    transform: translateY(-100%);
+    transition: all 1.5s;
+  }
 }
 
 #nav-toggle:checked ~ #nav-main {
@@ -383,10 +422,8 @@ input[type=checkbox] {
   transition: all 1s;
 }
 
-@media screen and (min-width: 768px) {
-  #nav-main {
-    transform: translateY(0);
-  }
+#nav-main {
+  transform: translateY(0%);
 }
 
 /*# sourceMappingURL=style.css.map */

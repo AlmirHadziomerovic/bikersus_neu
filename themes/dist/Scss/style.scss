@@ -10,6 +10,9 @@ text Domain: haddes
 
 
 @import 'colors.scss';
+@import 'media.scss';
+
+
 $max-width:1400px;
 $navbar-height-desktop:80px;
 $navbar-height-mobile:60px;
@@ -27,36 +30,8 @@ $columns-gap:30px;
   font-weight: 400;
   src: url('/themes/dist/assets/fonts/racing-sans-one-v13-latin-regular.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
 }
-@media screen and (min-width:768px) {
-  .screen-reader-text {
-    border: 0;
-    clip: rect(1px, 1px, 1px, 1px);
-    clip-path: inset(50%);
-    height: 1px;
-    margin: -1px;
-    overflow: hidden;
-    padding: 0;
-    position: absolute;
-    width: 1px;
-    word-wrap: normal!important;
-  }
-  .screen-reader-text:focus {
-    background-color: #eee;
-    clip: auto!important;
-    clip-path: none;
-    color: #444;
-    display: block;
-    font-size: 1em;
-    height: auto;
-    left: 5px;
-    line-height: normal;
-    padding: 15px 23px 14px;
-    text-decoration: none;
-    top: 5px;
-    width: auto;
-    z-index: 100000;
-  }
-}
+
+
 *, *::before, *::after{
   box-sizing:border-box;
 }
@@ -100,8 +75,16 @@ a:hover{
   top:0;
   left:0;
   right:0;
-  bottom:0;
-
+  bottom:0; position: static;
+  padding: 0;
+  overflow: visible;
+  opacity: 1;
+  pointer-events: auto;
+  font-size: clamp(12px, 1vw, 18px);
+  font-family:'Racing Sans One';
+  letter-spacing: 2px;
+  margin:-10px;
+  height:35px;
 }
 #navbar {
   position: absolute;
@@ -117,24 +100,34 @@ a:hover{
   justify-content: space-between;
   height:($navbar-height-mobile);
 }
-@media screen and (min-width:768px) {
+
   #navbar .container {
+    @media screen and  (min-width:768px){
     height: $navbar-height-desktop;
   }
-}#brand {
-   height: 100%;
-   width: auto;
- }
-@media screen and (min-width:768px) {
+}
+.brand {
+  height: 100%;
+  width: auto;
+}
+
+.brand {
+  @media screen and (min-width: 768px) {
+    max-width: 50%;
+    height: auto;
+  }
+}
   .logo {
     margin-bottom: 1.5em;
-    max-width:80%;
-    height: auto;
+    max-width: 70%;
+    height:auto;
 
+    @media screen and (min-width:768px){
+      margin-top:20px;
+    }
   }
-}@media screen and (min-width:768px) {
 
-}
+
 #brand img:not([src$=svg]) {
    height: 100%;
    width: auto;
@@ -148,8 +141,9 @@ a:hover{
 .sub-menu {
   font-size: 1.2em;
 }
-@media screen and (min-width:768px) {
+
   .nav-menu, .sub-menu {
+    @media screen and (min-width:768px){
     margin: 0;
     padding: 0;
     list-style-type: none;
@@ -160,7 +154,7 @@ a:hover{
 }
 .nav-menu {
    position: fixed;
-   top: $navbar-height-desktop;
+   top: $navbar-height-mobile;
    left: 0;
    right: 0;
    bottom: 0;
@@ -171,8 +165,9 @@ a:hover{
    text-align: center;
    font-weight: 400;
  }
-@media screen and (min-width:768px) {
+
   .nav-menu {
+    @media screen and (min-width:768px){
     position: fixed;
     top: var($navbar-height-desktop);
     left: 0;
@@ -186,19 +181,22 @@ a:hover{
     font-weight: 400;
     gap: 0;
   }
-}@media screen and (min-width:768px) {
+}
+
   #nav-main {
-    position: static;
-    display: flex;
-    padding: 0;
-    overflow: visible;
-    opacity: 1;
-    pointer-events: auto;
-    font-size: clamp(12px, 1vw, 18px);
-    font-family:'Racing Sans One';
-    letter-spacing: 2px;
+    @media screen and (min-width:768px){
+      position: static;
+      display: flex;
+      padding: 0;
+      overflow: visible;
+      opacity: 1;
+      pointer-events: auto;
+      font-size: clamp(12px, 1vw, 18px);
+      font-family:'Racing Sans One';
+      letter-spacing: 2px;
   }
-}input[type="checkbox"] {
+}
+input[type="checkbox"] {
    display: none;
  }
 #nav-main a {
@@ -208,12 +206,14 @@ a:hover{
   padding: .75em 0;
   list-style: none;
 }
-@media screen and (min-width:768px) {
+
   #nav-main a {
+    @media screen and (min-width:768px){
     font-size: .85em;
     list-style: none;
   }
-}#nav-button {
+}
+#nav-button {
    width: $navbar-height-mobile;
    height: $navbar-height-mobile;
    cursor: pointer;
@@ -232,49 +232,60 @@ a:hover{
   line-height: $navbar-height-mobile;
   padding: 0;
 }
-@media screen and (min-width:768px) {
+
   #nav-main>li>a {
+    @media screen and (min-width:768px){
     font-size: 1.4em;
     line-height: $navbar-height-desktop;
     padding-right: 1px;
     right: 10px;
   }
-}#nav-main .current-menu-item>a {
+}
+#nav-main .current-menu-item>a {
    color: $primary_color;
  }
-@media screen and (min-width:768px) {
+
   #nav-main .current-menu-parent>a {
+    @media screen and (min-width:768px){
     text-decoration: underline;
   }
-}@media screen and (min-width:768px) {
+}
+
   #nav-main>li {
-    position: relative;
-    margin-left: 2em;
+    @media screen and (min-width: 768px) {
+      position: relative;
+      margin-left: 2em;
+    }
   }
-  #nav-main .sub-menu {
-    position: absolute;
-    top: 100%;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 200px;
-    padding: 0 .5em;
-    background-color: transparent;
-    border-radius: 12px;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 200ms ease-in-out, transform 150ms linear;
-    font-size: 1.5em;
-  }
-  #nav-main li:hover>.sub-menu {
-    opacity: 1;
-    pointer-events: auto;
-    transform: translate(-50% 0);
-  }
-  #nav-main .sub-menu a {
-    display: block;
-  }
-}@media screen and (min-width:768px) {
+    #nav-main .sub-menu {
+      @media screen and (min-width: 768px) {
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 200px;
+        padding: 0 .5em;
+        background-color: transparent;
+        border-radius: 12px;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 200ms ease-in-out, transform 150ms linear;
+        font-size: 1.5em;
+      }
+    }
+      #nav-main li:hover > .sub-menu {
+        opacity: 1;
+        pointer-events: auto;
+        transform: translate(-50% 0);
+      }
+
+      #nav-main .sub-menu a {
+        display: block;
+      }
+
+
   #column-header-text {
+    @media screen and (min-width:768px){
     display: flex;
     justify-content: center;
     align-items: center;
@@ -289,11 +300,13 @@ a:hover{
    align-items: center;
    margin: 10px;
  }
-@media screen and (min-width:768px) {
+
   #nav-button {
+    @media screen and  (min-width:768px){
     display: none;
   }
-}#nav-button-icon {
+}
+#nav-button-icon {
    width: 45px;
    height: 3px;
    background-color: $primary_color;
@@ -301,22 +314,24 @@ a:hover{
 #nav-button-icon::before {
   width: 35px;
   height: 3px;
-  background-color: $primary_color;
+  background-color: $third_color;
 }
 #nav-button-icon::after {
   width: 35px;
   height: 3px;
-  background-color: grey;
+  background-color: $third_color;
 }
 #nav-button-icon {
   display: block;
   position: relative;
 }
-@media screen and (min-width:768px) {
+
   #nav-button-icon {
+    @media screen and (min-width:768px){
     display: none;
   }
-}#nav-button-icon::before, #nav-button-icon::after {
+}
+#nav-button-icon::before, #nav-button-icon::after {
    content: "";
    display: block;
    position: absolute;
@@ -342,18 +357,25 @@ a:hover{
 #nav-toggle:checked~#nav-button #nav-button-icon:after {
   transform: rotate(140deg);
 }
-#nav-main {
-  transform: translateY(-100%);
-  transition: all 1.5s;
-}
-#nav-toggle:checked~#nav-main {
-  opacity: 1;
-  pointer-events: auto;
-  transform: translateY(0);
-  transition: all 1s;
-}
-@media screen and (min-width:768px) {
+
   #nav-main {
-    transform: translateY(0);
+    @media screen and (min-width:768px){
+    transform: translateY(-100%);
+    transition: all 1.5s;
   }
 }
+  #nav-toggle:checked~#nav-main {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+    transition: all 1s;
+  }
+
+    #nav-main {
+      @media screen and (min-width: 768px) {
+      }
+      transform: translateY(0%);
+    }
+
+
+
