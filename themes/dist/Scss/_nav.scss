@@ -21,6 +21,7 @@ $columns-gap:30px;
   font-family:'Racing Sans One';
   letter-spacing: 2px;
   height:35px;
+  z-index:1000;
 }
 #navbar {
   position: fixed;
@@ -29,6 +30,7 @@ $columns-gap:30px;
   left: 0;
   z-index: 1000;
   margin-top:2rem;
+  background-color:white;
 }
 #navbar .container {
   display: flex;
